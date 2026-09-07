@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Golden Crescent Moon & Elite Payment Crest -->
+    <!-- Crescent Moon Curve -->
+    <path
+        android:pathData="M66,30 C50,30 36,41 36,54 C36,67 50,78 66,78 C54,75 46,65 46,54 C46,43 54,33 66,30 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:angle="45"
+                android:startColor="#F6D365"
+                android:endColor="#FDA085"
+                android:type="linear" />
+        </aapt:attr>
+    </path>
+    <!-- Elite Central Diamond / Shield -->
+    <path
+        android:pathData="M54,36 L68,48 L54,72 L40,48 Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:angle="90"
+                android:startColor="#00E676"
+                android:endColor="#00B0FF"
+                android:type="linear" />
+        </aapt:attr>
+    </path>
+    <!-- Rupee / Payment Symbol in core -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M50,46 L58,46 M50,49 L58,49 M50,44 L55,44 C56.5,44 57.5,45.2 57.5,46.5 C57.5,47.8 56.5,49 55,49 L50,49 L56.5,58"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="1.2"
+        android:strokeLineCap="round" />
+    <!-- Elite Star Accent -->
+    <path
+        android:fillColor="#FFE082"
+        android:pathData="M70,36 L71.5,40 L75.5,41.5 L71.5,43 L70,47 L68.5,43 L64.5,41.5 L68.5,40 Z" />
+</vector>

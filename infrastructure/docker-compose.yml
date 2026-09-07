@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: moonelite-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: moonelite_user
+      POSTGRES_PASSWORD: moonelite_secure_password
+      POSTGRES_DB: moonelite_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ../database/schema.sql:/docker-entrypoint-initdb.d/01_schema.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U moonelite_user -d moonelite_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    container_name: moonelite-redis
+    restart: always
+    ports:
+      - "6379:6379"
+    volumes:
+      - redisdata:/data
+
+  backend:
+    build:
+      context: ../backend
+      dockerfile: Dockerfile
+    container_name: moonelite-backend
+    restart: always
+    ports:
+      - "4000:4000"
+    environment:
+      PORT: 4000
+      NODE_ENV: production
+      DATABASE_URL: postgres://moonelite_user:moonelite_secure_password@postgres:5432/moonelite_db
+      REDIS_URL: redis://redis:6379
+      JWT_SECRET: super_secure_production_jwt_secret_key_10293847
+      PAYMENT_PROVIDER_MODE: SANDBOX
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_started
+
+volumes:
+  pgdata:
+  redisdata:

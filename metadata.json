@@ -1,0 +1,6 @@
+{
+  "name": "MOON Elite",
+  "description": "Production-ready Indian UPI payments, cashback rewards, and referral platform with compliance-first architecture.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
